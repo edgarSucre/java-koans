@@ -15,7 +15,7 @@ public class AboutConditionals {
         if (true) {
             x++;
         }
-        assertEquals(x, __);
+        assertEquals(x, 2);
     }
 
     @Koan
@@ -27,7 +27,7 @@ public class AboutConditionals {
         } else {
             x--;
         }
-        assertEquals(x, __);
+        assertEquals(x, 0);
     }
 
     @Koan
@@ -42,7 +42,7 @@ public class AboutConditionals {
         } else {
             x--;
         }
-        assertEquals(x, __);
+        assertEquals(x, 10);
     }
 
     @Koan
@@ -58,7 +58,7 @@ public class AboutConditionals {
         else
             x--;
         // ...but they are recommended.
-        assertEquals(x, __);
+        assertEquals(x, 10);
     }
 
     @Koan
@@ -76,7 +76,7 @@ public class AboutConditionals {
         } else {
             x--;
         }
-        assertEquals(x, __);
+        assertEquals(x, 0);
     }
 
     @Koan
@@ -93,7 +93,7 @@ public class AboutConditionals {
             default:
                 result += "Nothing";
         }
-        assertEquals(result, __);
+        assertEquals(result, "Basic One");
     }
 
     @Koan
@@ -108,7 +108,7 @@ public class AboutConditionals {
             default:
                 result += "Nothing";
         }
-        assertEquals(result, __);
+        assertEquals(result, "Basic OneTwoNothing");
     }
 
     @Koan
@@ -118,12 +118,13 @@ public class AboutConditionals {
         switch (i) {
             case 1:
                 result += "One";
+            //order does not matter, without a break it goes from top to botton
             default:
                 result += "Nothing";
             case 2:
                 result += "Two";
         }
-        assertEquals(result, __);
+        assertEquals(result, "Basic NothingTwo");
     }
 
     @Koan
@@ -134,13 +135,14 @@ public class AboutConditionals {
         final int caseOne = 1;
         String result = "Basic ";
         switch (i) {
+            //only constants can be use for cases, removing the keyword final, throws an error
             case caseOne:
                 result += "One";
                 break;
             default:
                 result += "Nothing";
         }
-        assertEquals(result, __);
+        assertEquals(result, "Basic Nothing");
     }
 
     @Koan
@@ -157,7 +159,7 @@ public class AboutConditionals {
             default:
                 result += "Nothing";
         }
-        assertEquals(result, __);
+        assertEquals(result, "Basic One");
     }
 
     @Koan
@@ -168,11 +170,11 @@ public class AboutConditionals {
         if (trueCount.count() || falseCount.count()) {
             x = "kthxbai";
         }
-        assertEquals(x, __);
-        assertEquals(trueCount.count, __);
-        assertEquals(falseCount.count, __);
+        assertEquals(x, "kthxbai");
+        assertEquals(trueCount.count, 1);
+        assertEquals(falseCount.count, 0);
     }
-    
+
     @Koan
     public void bitwise() {
         Counter trueCount = new Counter(true);
@@ -181,15 +183,15 @@ public class AboutConditionals {
         if (trueCount.count() | falseCount.count()) {
             x = "kthxbai";
         }
-        assertEquals(x, __);
-        assertEquals(trueCount.count, __);
-        assertEquals(falseCount.count, __);
+        assertEquals(x, "kthxbai");
+        assertEquals(trueCount.count, 1);
+        assertEquals(falseCount.count, 1);
     }
-    
+
     class Counter {
         boolean returnValue;
         int count = 0;
-        Counter(boolean returnValue) { 
+        Counter(boolean returnValue) {
             this.returnValue = returnValue;
         }
         boolean count() {
